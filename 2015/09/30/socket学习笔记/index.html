@@ -100,7 +100,7 @@ socket.emit(">
 var socket = io(&amp;apos;你的网络地址以及端口号&amp;apos;);//如：http://10.80.13.200:3002
 
 socket.emit(">
-<meta property="og:updated_time" content="2016-11-11T14:19:44.000Z">
+<meta property="og:updated_time" content="2016-11-11T14:47:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="socket学习笔记">
 <meta name="twitter:description" content="socket实现微型聊天室用法$ npm install socket.io
@@ -326,7 +326,183 @@ io.on(&quot;connection&quot;,function(socket){
         console.log(data);//数据处理代码
     });
 })
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dasdjsajdsajd</div></pre></td></tr></table></figure>
+</code></pre><h3 id="简易聊天室-完整代码"><a href="#简易聊天室-完整代码" class="headerlink" title="简易聊天室 完整代码"></a>简易聊天室 完整代码</h3><h4 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h4><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;聊天室&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;../css/index.css&quot;&gt;
+        &lt;script src=&quot;socket.io/socket.io.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;box&quot;&gt;
+            &lt;p&gt;欢迎留言！  在线人数&lt;span&gt;0&lt;/span&gt;&lt;/p&gt;
+            &lt;ul&gt;
+
+            &lt;/ul&gt;
+            &lt;form action=&quot;&quot;&gt;
+                &lt;input type=&quot;text&quot;&gt;
+                &lt;input type=&quot;button&quot; value=&quot;发送&quot;&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+    &lt;script src=&quot;../js/index.js&quot;&gt;&lt;/script&gt;
+&lt;/html&gt;
+</code></pre><h4 id="index-css"><a href="#index-css" class="headerlink" title="index.css"></a>index.css</h4><pre><code>*{
+    padding:0;
+    margin:0;
+}
+ul,li{
+    list-style: none;
+}
+.box{
+    width:600px;
+    padding:10px 30px;
+    margin:0 auto;
+}
+p{
+    height:50px;
+    line-height:50px;
+    padding-left:20px;
+    background: gray;
+    }
+ul{
+    width:600px;
+    min-height:400px;
+    max-height: 500px;
+    overflow: scroll;
+    background: lightblue;
+}
+li{
+    height:30px;
+    line-height:30px;
+    padding: 0px 20px;
+}
+li a{
+    float: right;
+}
+body{
+    background: lightgray;
+}
+[type=&quot;text&quot;]{
+    width:400px;
+    height:30px;
+    border:1px solid lightblue;
+}
+[type=&quot;button&quot;]{
+    margin-left:50px;
+    width:80px;
+    height:30px;
+    background: gray;
+    color: lightgreen;
+    border:none;
+}
+</code></pre><h4 id="index-js"><a href="#index-js" class="headerlink" title="index.js"></a>index.js</h4><pre><code>var socket = io(&apos;http://10.80.13.200:3002&apos;);
+var btn = document.querySelector(&quot;[type=&apos;button&apos;]&quot;);
+var span = document.querySelector(&quot;span&quot;);
+var chat = document.querySelector(&quot;ul&quot;);
+var content = document.querySelector(&quot;[type=&apos;text&apos;]&quot;);
+var dataM = [];
+
+btn.onclick = function (event) {
+
+    console.log(chat.scrollTop,chat.scrollHeight);
+    //去掉默认事件
+    event.preventDefault();
+    if(content.value != &apos;&apos;) {
+        var date = new Date();
+        var shijian = date.getHours() + &quot;:&quot; + date.getMinutes() + &quot;:&quot; + date.getSeconds();
+
+        socket.emit(&apos;message&apos;,{data:content.value,timee:shijian});
+        }
+        chat.scrollTop = chat.scrollHeight-20;
+    }
+
+    socket.on(&apos;back&apos;,function (data) {
+        chat.innerHTML = &apos;&apos;;
+        for(var i = 0;i&lt;data.data.length;i++){
+        dataM[i] = data.data[i];
+        var li = document.createElement(&apos;li&apos;);
+        var a = document.createElement(&apos;a&apos;);
+        li.innerHTML = data.data[i].data;
+        a.href = &quot;#&quot;;
+        a.innerHTML = data.data[i].timee;
+        li.appendChild(a);
+        chat.appendChild(li);
+    }
+    span.innerHTML = data.num;
+});
+</code></pre><h4 id="server-js"><a href="#server-js" class="headerlink" title="server.js"></a>server.js</h4><pre><code>var http = require(&apos;http&apos;);
+var fs = require(&apos;fs&apos;);
+var mime = require(&apos;mime&apos;);
+var server = http.createServer(handle);
+//绑定服务器
+var io = require(&apos;socket.io&apos;)(server);
+function handle(req,res) {
+    var filePath = &apos;&apos;;
+    if(req.url == &apos;/&apos;){
+        filePath = &apos;./html/index.html&apos;;
+    }else{
+        filePath = &apos;.&apos;+req.url;
+    }
+    exit(filePath,res);
+}
+function exit(filePath,res) {
+    fs.exists(filePath,function (exits) {
+        if(exits){
+            fs.readFile(filePath,&apos;utf-8&apos;,function (err,data) {
+                if(err){
+                    goTo404(res);
+                }
+                res.end(data);
+            })
+        }else {
+            goTo404(res);
+        }
+    })
+}
+function goTo404(res) {
+    res.writeHead(404,{
+        &quot;content-type&quot;:&quot;text/plain&quot;
+    })
+    res.end(&quot;404!   Sorry! no such file!&quot;);
+}
+server.listen(3002,function () {
+    console.log(&apos;OK&apos;);
+});
+var num = 0;
+//用户连接，回调
+io.on(&apos;connection&apos;,function (socket) {
+    //emit,事件名，发射主体
+    //on,事件名，接收信息，(服务端和客户端一一对应)
+    socket.on(&apos;message&apos;,function (data) {
+        fs.readFile(&apos;./tsconfig.json&apos;,function (err,dat) {
+            if(err){
+                goTo404(res);
+            }
+            var shuju = JSON.parse(dat);
+            shuju.data.push(data)
+            fs.writeFile(&apos;./tsconfig.json&apos;,JSON.stringify(shuju),function (err) {
+                if(err){
+                    goTo404(res);
+                }
+                read();
+            })
+        })
+        num++;
+    })
+function read() {
+    fs.readFile(&apos;./tsconfig.json&apos;,&apos;utf-8&apos;,function (err,dat) {
+        if(err){
+            goTo404(res);
+        }
+        var shu1 = JSON.parse(dat).data;
+        io.sockets.emit(&apos;back&apos;,{data:shu1,num:JSON.parse(dat).data.length});
+    })
+}
+    read();
+});
+</code></pre><p> ^-^刚开始学习，写的比较low ^-^ </p>
 
       
     </div>
@@ -465,7 +641,7 @@ io.on(&quot;connection&quot;,function(socket){
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#socket实现微型聊天室"><span class="nav-number">1.</span> <span class="nav-text">socket实现微型聊天室</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用法"><span class="nav-number">1.1.</span> <span class="nav-text">用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端："><span class="nav-number">1.1.1.</span> <span class="nav-text">客户端：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#注意：服务器端接受的事件名要和客户端发送的事件名一致，反过来同理！"><span class="nav-number">1.1.1.0.1.</span> <span class="nav-text">注意：服务器端接受的事件名要和客户端发送的事件名一致，反过来同理！</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器端："><span class="nav-number">1.1.2.</span> <span class="nav-text">服务器端：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#socket实现微型聊天室"><span class="nav-number">1.</span> <span class="nav-text">socket实现微型聊天室</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用法"><span class="nav-number">1.1.</span> <span class="nav-text">用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端："><span class="nav-number">1.1.1.</span> <span class="nav-text">客户端：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#注意：服务器端接受的事件名要和客户端发送的事件名一致，反过来同理！"><span class="nav-number">1.1.1.0.1.</span> <span class="nav-text">注意：服务器端接受的事件名要和客户端发送的事件名一致，反过来同理！</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器端："><span class="nav-number">1.1.2.</span> <span class="nav-text">服务器端：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简易聊天室-完整代码"><span class="nav-number">1.2.</span> <span class="nav-text">简易聊天室 完整代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#index-html"><span class="nav-number">1.2.1.</span> <span class="nav-text">index.html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#index-css"><span class="nav-number">1.2.2.</span> <span class="nav-text">index.css</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#index-js"><span class="nav-number">1.2.3.</span> <span class="nav-text">index.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#server-js"><span class="nav-number">1.2.4.</span> <span class="nav-text">server.js</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
