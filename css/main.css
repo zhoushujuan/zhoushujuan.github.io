@@ -185,7 +185,7 @@ th {
 }
 body {
   position: relative;
-  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 14px;
   line-height: 2;
   color: #555;
@@ -216,7 +216,7 @@ h6 {
   padding: 0;
   font-weight: bold;
   line-height: 1.5;
-  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 h2,
 h3,
@@ -372,19 +372,6 @@ dd {
   margin-left: 10px;
   margin-right: 5px;
 }
-.highlight table,
-.gist table {
-  width: auto;
-}
-.highlight table td,
-.gist table td {
-  border: none;
-}
-.highlight a,
-.gist a {
-  color: #222 !important;
-  text-decoration: none !important;
-}
 .affix.affix.affix {
   position: fixed;
 }
@@ -429,7 +416,7 @@ table {
   border: 1px solid #ddd;
   font-size: 14px;
   table-layout: fixed;
-  word-wrap: break-word;
+  word-wrap: break-all;
 }
 table>tbody>tr:nth-of-type(odd) {
   background-color: #f9f9f9;
@@ -516,18 +503,19 @@ pre,
 }
 pre,
 code {
-  font-family: "Input Mono", "PT Mono", Consolas, Monaco, Menlo, monospace;
+  font-family: consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
 }
 code {
   padding: 2px 4px;
   word-break: break-all;
-  color: #222;
+  color: #555;
   background: #eee;
   border-radius: 4px;
   font-size: 13px;
 }
 pre code {
   padding: 0;
+  color: #4d4d4c;
   background: none;
   text-shadow: none;
 }
@@ -546,8 +534,8 @@ pre code {
   padding: 0;
 }
 .highlight figcaption {
-  font-size: 0.85em;
-  color: #8e908c;
+  font-size: 1em;
+  color: #4d4d4c;
   line-height: 1em;
   margin-bottom: 1em;
 }
@@ -561,6 +549,10 @@ pre code {
 }
 .highlight figcaption a {
   float: right;
+  color: #4d4d4c;
+}
+.highlight figcaption a:hover {
+  border-bottom-color: #4d4d4c;
 }
 .highlight .gutter pre {
   color: #666;
@@ -569,6 +561,12 @@ pre code {
 }
 .highlight .line {
   height: 20px;
+}
+.gist table {
+  width: auto;
+}
+.gist table td {
+  border: none;
 }
 pre .comment {
   color: #8e908c;
@@ -896,7 +894,6 @@ pre .javascript .function {
   color: #fff;
   background: #222;
   border-bottom: none;
-  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .brand:hover {
   color: #fff;
@@ -913,6 +910,7 @@ pre .javascript .function {
   line-height: 36px;
   font-size: 20px;
   font-weight: normal;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .site-subtitle {
   margin-top: 10px;
@@ -999,9 +997,12 @@ pre .javascript .function {
 .use-motion .menu-item {
   opacity: 0;
 }
+.post-body {
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+}
 @media (max-width: 767px) {
   .post-body {
-    word-break: break-all;
+    word-break: break-word;
   }
 }
 .post-body .fancybox img {
@@ -1024,6 +1025,10 @@ pre .javascript .function {
   display: inline-block;
   font-size: 16px;
   -ms-transform: rotate(30deg);
+  -webkit-transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  -o-transform: rotate(30deg);
   transform: rotate(30deg);
 }
 .posts-expand {
@@ -1103,7 +1108,20 @@ pre .javascript .function {
   }
 }
 .posts-collapse {
+  position: relative;
+  z-index: 1010;
   margin-left: 55px;
+}
+.posts-collapse::after {
+  content: " ";
+  position: absolute;
+  top: 20px;
+  left: 0;
+  margin-left: -2px;
+  width: 4px;
+  height: 100%;
+  background: #f5f5f5;
+  z-index: -1;
 }
 @media (max-width: 767px) {
   .posts-collapse {
@@ -1178,7 +1196,6 @@ pre .javascript .function {
   margin-left: 60px;
   font-size: 16px;
   font-weight: normal;
-  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
   line-height: inherit;
 }
 .posts-collapse .post-title::after {
@@ -1199,6 +1216,7 @@ pre .javascript .function {
   font-size: 26px;
   text-align: center;
   word-break: break-word;
+  font-weight: 400;
 }
 @media (max-width: 767px) {
   .posts-expand .post-title {
@@ -1222,6 +1240,10 @@ pre .javascript .function {
   left: 0;
   background-color: #000;
   visibility: hidden;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  -o-transform: scaleX(0);
   transform: scaleX(0);
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
@@ -1229,6 +1251,10 @@ pre .javascript .function {
 }
 .posts-expand .post-title-link:hover::before {
   visibility: visible;
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  -o-transform: scaleX(1);
   transform: scaleX(1);
 }
 .posts-expand .post-title-link .fa {
@@ -1237,6 +1263,7 @@ pre .javascript .function {
 .posts-expand .post-meta {
   margin: 3px 0 60px 0;
   color: #999;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
   text-align: center;
 }
@@ -1436,24 +1463,28 @@ pre .javascript .function {
 .site-author-image {
   display: block;
   margin: 0 auto;
+  padding: 2px;
   max-width: 96px;
   height: auto;
   border: 2px solid #333;
-  padding: 2px;
 }
 .site-author-name {
   margin: 5px 0 0;
+  text-align: center;
   color: #f5f5f5;
+  font-weight: normal;
 }
 .site-description {
   margin-top: 5px;
+  text-align: center;
   font-size: 14px;
-  color: #555;
+  color: #999;
 }
 .site-state {
   overflow: hidden;
   line-height: 1.4;
   white-space: nowrap;
+  text-align: center;
 }
 .site-state-item {
   display: inline-block;
@@ -1517,7 +1548,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9e732d;
+  background: #edffff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2003,6 +2034,23 @@ a.search-result {
   top: 42%;
   color: #ccc;
 }
+.site-uv,
+.site-pv,
+.page-pv {
+  display: inline-block;
+}
+.site-uv .busuanzi-value,
+.site-pv .busuanzi-value,
+.page-pv .busuanzi-value {
+  margin: 0 5px;
+}
+.site-uv {
+  margin-right: 10px;
+}
+.site-uv::after {
+  content: "|";
+  padding-left: 10px;
+}
 .use-motion .post {
   opacity: 0;
 }
@@ -2016,19 +2064,6 @@ a.search-result {
     top: 5px;
   }
 }
-.page-archive .posts-collapse {
-  position: relative;
-  z-index: 1010;
-}
-.page-archive .posts-collapse::after {
-  top: 20px;
-  left: 0;
-  margin-left: -2px;
-  width: 4px;
-  height: 100%;
-  background: #f5f5f5;
-  z-index: -1;
-}
 .page-archive .posts-collapse .archive-move-on {
   position: absolute;
   top: 11px;
@@ -2040,11 +2075,6 @@ a.search-result {
   background: #555;
   border: 1px solid #fff;
   border-radius: 50%;
-}
-.page-archive .posts-collapse::before,
-.page-archive .posts-collapse::after {
-  content: " ";
-  position: absolute;
 }
 .category-all-page .category-all-title {
   text-align: center;
@@ -2146,4 +2176,7 @@ a.search-result {
 }
 .site-search form {
   display: none;
+}
+.links-of-blogroll-inline .links-of-blogroll-item {
+  display: inline-block;
 }
