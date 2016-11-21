@@ -253,6 +253,250 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/21/JS中的call、apply、bind方法/" itemprop="url">
+                  JS中的call、apply、bind方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-21T19:50:25+08:00" content="2016-11-21">
+              2016-11-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/21/JS中的call、apply、bind方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/21/JS中的call、apply、bind方法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在JavaScript中，<code>call</code>、<code>apply</code>和<code>bind</code>是<code>Function</code>对象自带的三个方法，这三个方法的主要作用是改变函数中的<code>this</code>指向。</p>
+<p><code>call</code>、<code>apply</code>、<code>bind</code>方法的区别和相同之处：</p>
+<ol>
+<li><code>apply</code>、<code>call</code>、<code>bind</code>三者都是用来改变函数的this对象的指向；</li>
+<li><code>apply</code>、<code>call</code>、<code>bind</code>三者第一个参数都是this要指向的对象，也就是向指定的上下文(函数的每次调用都会拥有一个特殊值 —— 本次调用的上下文(xontext) —— 这就是this关键字的值。)；</li>
+<li><code>apply</code>、<code>call</code>、<code>bind</code>三者都可以利用后续参数传值；</li>
+<li><code>bind</code>是返回对应函数,便于稍后使用；<code>apply</code>、<code>call</code>则是立即调用。</li>
+</ol>
+<h2 id="this指向问题"><a href="#this指向问题" class="headerlink" title="this指向问题"></a>this指向问题</h2><pre><code>1. 在全局作用域下使用，this表示window.
+2. 在函数内部使用
+    ·  使用this的函数，被当成对象属性调用，该this指向该对象。
+    · 普通函数调用时，其中的this指向window。
+    · 构造函数中使用，this指向实例化的对象。
+</code></pre><h2 id="一、call-方法"><a href="#一、call-方法" class="headerlink" title="一、call()方法"></a>一、call()方法</h2><h3 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">call([thisObj[,arg1[, arg2[, [,.argN]]]]])</div></pre></td></tr></table></figure>
+<h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p><code>调用一个对象的一个方法，以另一个对象替换当前对象。</code></p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ol>
+<li><code>call</code>方法可以用来代替另一个对象调用其的方法。</li>
+<li><code>call</code>方法可将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。</li>
+</ol>
+<h3 id="thisObj-的取值有以下4种情况："><a href="#thisObj-的取值有以下4种情况：" class="headerlink" title="thisObj 的取值有以下4种情况："></a>thisObj 的取值有以下4种情况：</h3><ol>
+<li>不传，或者传null,undefined,函数中的this指向window对象。</li>
+<li>传递另一个函数的函数名，函数中的this指向这个函数的引用。</li>
+<li>传递字符串、数值或布尔类型等基础类型，函数中的this指向其对应的包装对象，如String、Number、Boolean</li>
+<li>传第一个对象，函数中的this指向这个对象。</li>
+</ol>
+<hr>
+<pre><code>function a(){   
+      console.log(this);   //输出函数a中的this对象
+}       
+
+function b(){}       
+
+var c={name:&quot;call&quot;};    //定义对象c  
+
+a.call();   //window
+a.call(null);   //window
+a.call(undefined);   //window
+a.call(1);   //Number
+a.call(&apos;&apos;);   //String
+a.call(true);   //Boolean
+a.call(b);   //function b(){}
+a.call(c);   //Object
+</code></pre><p>如果你不理解上面的，没关系，我们再来看一个例子</p>
+<pre><code>function class1(){   
+  this.name=function(){   
+    console.log(&quot;我是class1内的方法&quot;);   
+  }   
+}   
+function class2(){ 
+  class1.call(this);  //此行代码执行后，当前的this指向了    class1（也可以说class2继承了class1）   
+}   
+
+var f=new class2();   
+f.name();   //调用的是class1内的方法，将class1的name方    法交给class2使用
+</code></pre><p>常用例子：（1）</p>
+<pre><code>function eat(x,y){   
+  console.log(x+y);   
+}   
+function drink(x,y){   
+  console.log(x-y);   
+}   
+eat.call(drink,3,2);
+
+输出：5
+</code></pre><p>这个例子中的意思就是用 eat 来替换 drink，eat.call(drink,3,2) == eat(3,2) ，所以运行结果为：console.log(5);<br>注意：js 中的函数其实是对象，函数名是对 Function 对象的引用。</p>
+<p>（2）</p>
+<pre><code>function Animal(){   
+      this.name=&quot;animal&quot;;   
+      this.showName=function(){   
+        console.log(this.name);   
+      }   
+}   
+function Dog(){   
+      this.name=&quot;dog&quot;;   
+}   
+var animal=new Animal();   
+var dog=new Dog();       
+
+animal.showName.call(dog);
+
+输出：dog
+</code></pre><p>在上面的代码中，我们可以看到Dog里并没有showName方法，那为什么（this.name）的值是dog呢？</p>
+<p>关键就在于最后一段代码（animal.showName.call(dog)），意思是把animal的方法放到dog上执行，也可以说，把animal 的showName()方法放到 dog上来执行，所以this.name 应该是 dog。</p>
+<p>（3）继承</p>
+<pre><code>function Animal(name){   
+      this.name=name;   
+      this.showName=function(){   
+        console.log(this.name);   
+      }   
+}   
+function Dog(name){   
+      Animal.call(this,name);   
+}   
+var dog=new Dog(&quot;Crazy dog&quot;);   
+dog.showName();
+
+输出：Crazy dog
+</code></pre><p>Animal.call(this) 的意思就是使用 Animal对象代替this对象，那么Dog就能直接调用Animal的所有属性和方法。</p>
+<h2 id="二、apply-方法"><a href="#二、apply-方法" class="headerlink" title="二、apply()方法"></a>二、apply()方法</h2><h3 id="语法：-1"><a href="#语法：-1" class="headerlink" title="语法："></a>语法：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply([thisObj[,argArray]])</div></pre></td></tr></table></figure>
+<h3 id="定义：-1"><a href="#定义：-1" class="headerlink" title="定义："></a>定义：</h3><p>应用某一对象的方法，用另一个对象替换当前对象。</p>
+<h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><p>如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError.</p>
+<p>如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数。</p>
+<h3 id="call-和-apply的区别"><a href="#call-和-apply的区别" class="headerlink" title="call 和 apply的区别"></a>call 和 apply的区别</h3><p>对于 apply、call 二者而言，作用完全一样，只是接受参数的方式不太一样。</p>
+<pre><code>function class1(args1,args2){       
+      this.name=function(){      
+           console.log(args,args);      
+      }     
+}     
+function class2(){    
+      var args1=&quot;1&quot;;
+      var args2=&quot;2&quot;;
+      class1.call(this,args1,args2);  
+      /*或*/
+      class1.apply(this,[args1,args2]);
+}
+
+var c=new class2();   
+c.name();
+
+输出：1 2
+</code></pre><p>call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。</p>
+<p><strong>既然两者功能一样，那该用哪个呢？</strong></p>
+<p>在JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时用 call ；而不确定的时候用 apply，然后把参数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来遍历所有的参数。</p>
+<h2 id="三、bind-方法"><a href="#三、bind-方法" class="headerlink" title="三、bind()方法"></a>三、bind()方法</h2><p><code>bind</code>是在EcmaScript5中扩展的方法（IE6,7,8不支持）.</p>
+<p><code>bind()</code> 方法与 apply 和 call 很相似，也是可以改变函数体内 this 的指向。</p>
+<p><strong>MDN的解释是</strong>：bind()方法会创建一个新函数，称为绑定函数，当调用这个绑定函数时，绑定函数会以创建它时传入 bind()方法的第一个参数作为 this，传入 bind() 方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数。</p>
+<p><code>注意</code>：bind方法的返回值是函数</p>
+<pre><code>var bar=function(){   
+      console.log(this.x);   
+}
+var foo={ 
+     x:3   
+}   
+bar();  
+bar.bind(foo)();
+ /*或*/
+var func=bar.bind(foo);   
+func();
+
+输出：
+undefined
+3
+</code></pre><hr>
+<p><code>转自</code>：<a href="http://gold.xitu.io/post/582bcd36d203090067edb8a0?utm_source=gold_browser_extension" target="_blank" rel="external">http://gold.xitu.io/post/582bcd36d203090067edb8a0?utm_source=gold_browser_extension</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/11/nodeJS学习笔记/" itemprop="url">
                   nodeJS学习笔记
                 </a>
@@ -438,10 +682,8 @@
 </ol>
 <p>用法：</p>
 <pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var num = 1;</div><div class="line">num.toString();</div></pre></td></tr></table></figure>
-
-
-结果：`1` //字符串1
-</code></pre><h3 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h3><h4 id="使用类型"><a href="#使用类型" class="headerlink" title="使用类型"></a>使用类型</h4><ol>
+</code></pre><p><code>结果：1 //字符串1</code></p>
+<h3 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h3><h4 id="使用类型"><a href="#使用类型" class="headerlink" title="使用类型"></a>使用类型</h4><ol>
 <li>null</li>
 <li>undefined</li>
 </ol>
@@ -931,7 +1173,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
