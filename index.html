@@ -253,6 +253,118 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/21/JS基础知识（二）———运算符/" itemprop="url">
+                  JS基础知识（二）—— 运算符
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-21T21:15:12+08:00" content="2016-11-21">
+              2016-11-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/21/JS基础知识（二）———运算符/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/21/JS基础知识（二）———运算符/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><strong>运算符就是完成操作的一系列符号</strong>，它有以下几类： 　　</p>
+<ol>
+<li>算术运算符（+,-,*,/,++,–,%）;</li>
+<li>赋值运算符(=,+=,-=,*=,/=,%=,&lt;&lt;=,&gt;&gt;=,|=,&amp;=);</li>
+<li>关系运算符(&gt;,&lt;,&lt;=,&gt;=,==,===,!=,!==);</li>
+<li>对象运算符(in,instancesof,new,delete,.,[],());</li>
+<li>逻辑运算符(||,&amp;&amp;,!);</li>
+<li>位移运算符(|,&amp;,&lt;&lt;,&gt;&gt;,~,^);</li>
+<li>其他运算符(? :,typeof,逗号,void).</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/21/JS基础知识（二）———运算符/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/21/JS中的call、apply、bind方法/" itemprop="url">
                   JS中的call、apply、bind方法
                 </a>
@@ -303,153 +415,18 @@
 
       
         
-          
-            <p>在JavaScript中，<code>call</code>、<code>apply</code>和<code>bind</code>是<code>Function</code>对象自带的三个方法，这三个方法的主要作用是改变函数中的<code>this</code>指向。</p>
+          <p>在JavaScript中，<code>call</code>、<code>apply</code>和<code>bind</code>是<code>Function</code>对象自带的三个方法，这三个方法的主要作用是改变函数中的<code>this</code>指向。</p>
 <p><code>call</code>、<code>apply</code>、<code>bind</code>方法的区别和相同之处：</p>
 <ol>
 <li><code>apply</code>、<code>call</code>、<code>bind</code>三者都是用来改变函数的this对象的指向；</li>
 <li><code>apply</code>、<code>call</code>、<code>bind</code>三者第一个参数都是this要指向的对象，也就是向指定的上下文(函数的每次调用都会拥有一个特殊值 —— 本次调用的上下文(xontext) —— 这就是this关键字的值。)；</li>
 <li><code>apply</code>、<code>call</code>、<code>bind</code>三者都可以利用后续参数传值；</li>
-<li><code>bind</code>是返回对应函数,便于稍后使用；<code>apply</code>、<code>call</code>则是立即调用。</li>
-</ol>
-<h2 id="this指向问题"><a href="#this指向问题" class="headerlink" title="this指向问题"></a>this指向问题</h2><pre><code>1. 在全局作用域下使用，this表示window.
-2. 在函数内部使用
-    ·  使用this的函数，被当成对象属性调用，该this指向该对象。
-    · 普通函数调用时，其中的this指向window。
-    · 构造函数中使用，this指向实例化的对象。
-</code></pre><h2 id="一、call-方法"><a href="#一、call-方法" class="headerlink" title="一、call()方法"></a>一、call()方法</h2><h3 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">call([thisObj[,arg1[, arg2[, [,.argN]]]]])</div></pre></td></tr></table></figure>
-<h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p><code>调用一个对象的一个方法，以另一个对象替换当前对象。</code></p>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ol>
-<li><code>call</code>方法可以用来代替另一个对象调用其的方法。</li>
-<li><code>call</code>方法可将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。</li>
-</ol>
-<h3 id="thisObj-的取值有以下4种情况："><a href="#thisObj-的取值有以下4种情况：" class="headerlink" title="thisObj 的取值有以下4种情况："></a>thisObj 的取值有以下4种情况：</h3><ol>
-<li>不传，或者传null,undefined,函数中的this指向window对象。</li>
-<li>传递另一个函数的函数名，函数中的this指向这个函数的引用。</li>
-<li>传递字符串、数值或布尔类型等基础类型，函数中的this指向其对应的包装对象，如String、Number、Boolean</li>
-<li>传第一个对象，函数中的this指向这个对象。</li>
-</ol>
-<hr>
-<pre><code>function a(){   
-      console.log(this);   //输出函数a中的this对象
-}       
-
-function b(){}       
-
-var c={name:&quot;call&quot;};    //定义对象c  
-
-a.call();   //window
-a.call(null);   //window
-a.call(undefined);   //window
-a.call(1);   //Number
-a.call(&apos;&apos;);   //String
-a.call(true);   //Boolean
-a.call(b);   //function b(){}
-a.call(c);   //Object
-</code></pre><p>如果你不理解上面的，没关系，我们再来看一个例子</p>
-<pre><code>function class1(){   
-  this.name=function(){   
-    console.log(&quot;我是class1内的方法&quot;);   
-  }   
-}   
-function class2(){ 
-  class1.call(this);  //此行代码执行后，当前的this指向了    class1（也可以说class2继承了class1）   
-}   
-
-var f=new class2();   
-f.name();   //调用的是class1内的方法，将class1的name方    法交给class2使用
-</code></pre><p>常用例子：（1）</p>
-<pre><code>function eat(x,y){   
-  console.log(x+y);   
-}   
-function drink(x,y){   
-  console.log(x-y);   
-}   
-eat.call(drink,3,2);
-
-输出：5
-</code></pre><p>这个例子中的意思就是用 eat 来替换 drink，eat.call(drink,3,2) == eat(3,2) ，所以运行结果为：console.log(5);<br>注意：js 中的函数其实是对象，函数名是对 Function 对象的引用。</p>
-<p>（2）</p>
-<pre><code>function Animal(){   
-      this.name=&quot;animal&quot;;   
-      this.showName=function(){   
-        console.log(this.name);   
-      }   
-}   
-function Dog(){   
-      this.name=&quot;dog&quot;;   
-}   
-var animal=new Animal();   
-var dog=new Dog();       
-
-animal.showName.call(dog);
-
-输出：dog
-</code></pre><p>在上面的代码中，我们可以看到Dog里并没有showName方法，那为什么（this.name）的值是dog呢？</p>
-<p>关键就在于最后一段代码（animal.showName.call(dog)），意思是把animal的方法放到dog上执行，也可以说，把animal 的showName()方法放到 dog上来执行，所以this.name 应该是 dog。</p>
-<p>（3）继承</p>
-<pre><code>function Animal(name){   
-      this.name=name;   
-      this.showName=function(){   
-        console.log(this.name);   
-      }   
-}   
-function Dog(name){   
-      Animal.call(this,name);   
-}   
-var dog=new Dog(&quot;Crazy dog&quot;);   
-dog.showName();
-
-输出：Crazy dog
-</code></pre><p>Animal.call(this) 的意思就是使用 Animal对象代替this对象，那么Dog就能直接调用Animal的所有属性和方法。</p>
-<h2 id="二、apply-方法"><a href="#二、apply-方法" class="headerlink" title="二、apply()方法"></a>二、apply()方法</h2><h3 id="语法：-1"><a href="#语法：-1" class="headerlink" title="语法："></a>语法：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply([thisObj[,argArray]])</div></pre></td></tr></table></figure>
-<h3 id="定义：-1"><a href="#定义：-1" class="headerlink" title="定义："></a>定义：</h3><p>应用某一对象的方法，用另一个对象替换当前对象。</p>
-<h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><p>如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError.</p>
-<p>如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数。</p>
-<h3 id="call-和-apply的区别"><a href="#call-和-apply的区别" class="headerlink" title="call 和 apply的区别"></a>call 和 apply的区别</h3><p>对于 apply、call 二者而言，作用完全一样，只是接受参数的方式不太一样。</p>
-<pre><code>function class1(args1,args2){       
-      this.name=function(){      
-           console.log(args,args);      
-      }     
-}     
-function class2(){    
-      var args1=&quot;1&quot;;
-      var args2=&quot;2&quot;;
-      class1.call(this,args1,args2);  
-      /*或*/
-      class1.apply(this,[args1,args2]);
-}
-
-var c=new class2();   
-c.name();
-
-输出：1 2
-</code></pre><p>call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。</p>
-<p><strong>既然两者功能一样，那该用哪个呢？</strong></p>
-<p>在JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时用 call ；而不确定的时候用 apply，然后把参数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来遍历所有的参数。</p>
-<h2 id="三、bind-方法"><a href="#三、bind-方法" class="headerlink" title="三、bind()方法"></a>三、bind()方法</h2><p><code>bind</code>是在EcmaScript5中扩展的方法（IE6,7,8不支持）.</p>
-<p><code>bind()</code> 方法与 apply 和 call 很相似，也是可以改变函数体内 this 的指向。</p>
-<p><strong>MDN的解释是</strong>：bind()方法会创建一个新函数，称为绑定函数，当调用这个绑定函数时，绑定函数会以创建它时传入 bind()方法的第一个参数作为 this，传入 bind() 方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数。</p>
-<p><code>注意</code>：bind方法的返回值是函数</p>
-<pre><code>var bar=function(){   
-      console.log(this.x);   
-}
-var foo={ 
-     x:3   
-}   
-bar();  
-bar.bind(foo)();
- /*或*/
-var func=bar.bind(foo);   
-func();
-
-输出：
-undefined
-3
-</code></pre><hr>
-<p><code>转自</code>：<a href="http://gold.xitu.io/post/582bcd36d203090067edb8a0?utm_source=gold_browser_extension" target="_blank" rel="external">http://gold.xitu.io/post/582bcd36d203090067edb8a0?utm_source=gold_browser_extension</a></p>
-
-          
+<li><code>bind</code>是返回对应函数,便于稍后使用；<code>apply</code>、<code>call</code>则是立即调用。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/21/JS中的call、apply、bind方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -666,91 +643,19 @@ undefined
 
       
         
-          
-            <h1 id="字符串String类型"><a href="#字符串String类型" class="headerlink" title="* 字符串String类型"></a>* 字符串String类型</h1><h2 id="·-特性"><a href="#·-特性" class="headerlink" title="· 特性"></a>· 特性</h2><ol>
-<li>有0个或多个16位Unicode字符组成</li>
-<li>单引号与双引号不能交叉使用</li>
-<li>使用length属性访问字符串的长度<br>a. 转义序列表示一个字符<br>b. 无法精确返回双字节字符长度</li>
-<li>字符串一旦被创建，其值将不能改变，若要改变必须销毁原有字符串</li>
+          <p>JS的基本数据类型:</p>
+<ol>
+<li>String 字符串类型。</li>
+<li>Number 数值类型，整数、小数、负数、NaN。</li>
+<li>Boolean 布尔类型 (true,false)。</li>
+<li>Undefined undefined (未知类型)没有定义的量。</li>
+<li>Null null (空类型)。</li>
 </ol>
-<h2 id="·-转义序列"><a href="#·-转义序列" class="headerlink" title="· 转义序列"></a>· 转义序列</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">\n 换行 </div><div class="line">\t 制表符</div><div class="line">\b 空格</div><div class="line">\r 回车符</div><div class="line">\f 分页符</div><div class="line">\\ 斜杠 \</div><div class="line">\<span class="string">' 单引号</span></div><div class="line">\" 双引号</div><div class="line">\xnn 十六进制，n代表0~F</div><div class="line">\unnnn 以十六进制代码表示一个Unicode字符</div></pre></td></tr></table></figure>
-<h2 id="·-类型转换方法"><a href="#·-类型转换方法" class="headerlink" title="· 类型转换方法"></a>· 类型转换方法</h2><h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h3><h4 id="使用类型："><a href="#使用类型：" class="headerlink" title="使用类型："></a>使用类型：</h4><ol>
-<li>number</li>
-<li>boolean</li>
-<li>string</li>
-<li>object</li>
-</ol>
-<p>用法：</p>
-<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var num = 1;</div><div class="line">num.toString();</div></pre></td></tr></table></figure>
-</code></pre><p><code>结果：1 //字符串1</code></p>
-<h3 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h3><h4 id="使用类型"><a href="#使用类型" class="headerlink" title="使用类型"></a>使用类型</h4><ol>
-<li>null</li>
-<li>undefined</li>
-</ol>
-<h3 id="eval"><a href="#eval" class="headerlink" title="eval()"></a>eval()</h3><h4 id="计算字符串表达式的值并以数值的形式返回"><a href="#计算字符串表达式的值并以数值的形式返回" class="headerlink" title="计算字符串表达式的值并以数值的形式返回"></a>计算字符串表达式的值并以数值的形式返回</h4><h1 id="undefined-未定义"><a href="#undefined-未定义" class="headerlink" title="* undefined 未定义"></a>* undefined 未定义</h1><h2 id="·-undefined的几种情况"><a href="#·-undefined的几种情况" class="headerlink" title="· undefined的几种情况"></a>· undefined的几种情况</h2><ol>
-<li>使用var声明变量但未初始化</li>
-<li>区分空对象指针与尚未定义的变量</li>
-<li>对未初始化的变量及未声明的变量使用typeof运算符均会返回undefined</li>
-</ol>
-<h1 id="null-空"><a href="#null-空" class="headerlink" title="* null 空"></a>* null 空</h1><p>逻辑上null表示一个空对象的指针</p>
-<p><code>使用typeof检测室会返回object</code></p>
-<h2 id="·-undefined与null的关系"><a href="#·-undefined与null的关系" class="headerlink" title="· undefined与null的关系"></a>· undefined与null的关系</h2><p>· undefined派生于null因此在使用”==”进行比较二者时，结果是true。<br>· 没有必要将变量值显示声明undefined<br>· 声明空对象时应将其值赋值为null</p>
-<h1 id="boolean"><a href="#boolean" class="headerlink" title="* boolean"></a>* boolean</h1><p> <code>true</code>为真，<code>flase</code>为假</p>
-<p> <code>true</code>不一定=1，<code>false</code>不一定=0。</p>
-<h2 id="·-使用Boolean-进行转换"><a href="#·-使用Boolean-进行转换" class="headerlink" title="· 使用Boolean()进行转换"></a>· 使用Boolean()进行转换</h2><h3 id="转换为true"><a href="#转换为true" class="headerlink" title="转换为true"></a>转换为true</h3><ol>
-<li>任何非空字符串</li>
-<li>任何非零数值</li>
-<li>任何非空对象</li>
-</ol>
-<h3 id="转换为false"><a href="#转换为false" class="headerlink" title="转换为false"></a>转换为false</h3><ol>
-<li>空字符串</li>
-<li>0及NaN</li>
-<li>null及undefined</li>
-</ol>
-<h1 id="数值number类型"><a href="#数值number类型" class="headerlink" title="* 数值number类型"></a>* 数值number类型</h1><h2 id="·-进制"><a href="#·-进制" class="headerlink" title="· 进制"></a>· 进制</h2><h3 id="十进制"><a href="#十进制" class="headerlink" title="十进制"></a>十进制</h3><h4 id="平时见到的数字都是十进制如"><a href="#平时见到的数字都是十进制如" class="headerlink" title="平时见到的数字都是十进制如"></a>平时见到的数字都是十进制如</h4><p>27，4，65，1，。。。</p>
-<h3 id="八进制"><a href="#八进制" class="headerlink" title="八进制"></a>八进制</h3><p>八进制<code>前导 0</code>，有效序列<code>0~7</code>。若超出有效范围，<code>前导位0被忽略，后面的数当成十进制</code>，如：010，转换成十进制的数是8；028则会被当成十进制的数28。</p>
-<h3 id="十六进制"><a href="#十六进制" class="headerlink" title="十六进制"></a>十六进制</h3><p>十六进制<code>前导位0x</code>，有效序列<code>0~9,A~F</code>，<code>A</code>代表10，以此类推<code>F</code>是15。0x10,转换成十进制的数是16。</p>
-<h2 id="·-浮点数"><a href="#·-浮点数" class="headerlink" title="· 浮点数"></a>· 浮点数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">小数点后至少一位数字</div></pre></td></tr></table></figure>
-<h3 id="科学计数法"><a href="#科学计数法" class="headerlink" title="科学计数法"></a>科学计数法</h3><p>· 小数点后带有6个0的浮点数<br>· 以e为底*10的+-N次幂</p>
-<h3 id="最高精度"><a href="#最高精度" class="headerlink" title="最高精度"></a>最高精度</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">17位小数</div></pre></td></tr></table></figure>
-<h4 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h4><p>· 存在舍入误差<br>· 无法测试特定浮点数值</p>
-<h2 id="·-数值范围"><a href="#·-数值范围" class="headerlink" title="· 数值范围"></a>· 数值范围</h2><p>###最小值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Number.MIN_VALUE</div></pre></td></tr></table></figure></p>
-<h3 id="最大值"><a href="#最大值" class="headerlink" title="最大值"></a>最大值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Number.MAX_VALUE</div></pre></td></tr></table></figure>
-<h3 id="超出范围"><a href="#超出范围" class="headerlink" title="超出范围"></a>超出范围</h3><ol>
-<li>正无穷<br>· Infinity <br>· Number.POSITIVE_INFINITY</li>
-<li>负无穷<br>· -Infinity <br>· Number.NEVATIVE_INFINITY</li>
-<li>缺陷<br><code>无法参与下一次计算</code></li>
-<li>检测方法：<code>isFinite()</code><br>· 超出范围 false<br>· 合法范围 true</li>
-</ol>
-<h2 id="·-NaN非数"><a href="#·-NaN非数" class="headerlink" title="· NaN非数"></a>· NaN非数</h2><h3 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Not a Namber</div></pre></td></tr></table></figure>
-<p>非数值</p>
-<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ol>
-<li>任何涉及NaN的操作都将返回NaN</li>
-<li>NaN与任何值都不相等，包括其自身</li>
-</ol>
-<h3 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h3><p><code>方法：isNaN()</code></p>
-<p>可以转换为数值的返回false,不能转换成数值的返回true.</p>
-<h2 id="·-数值转换"><a href="#·-数值转换" class="headerlink" title="· 数值转换"></a>· 数值转换</h2><h3 id="Number-方法"><a href="#Number-方法" class="headerlink" title="Number()方法"></a>Number()方法</h3><h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Number(<span class="literal">true</span>); //值是1.</div><div class="line">Number(<span class="literal">false</span>); //值是0.</div><div class="line">Number(null); //值是0.</div><div class="line">Number(undefined); //值是NaN.</div></pre></td></tr></table></figure>
-<h4 id="字符串转换成数值"><a href="#字符串转换成数值" class="headerlink" title="字符串转换成数值"></a>字符串转换成数值</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">只包含数字：转换成十进制数，前导位有0的话，0被忽略。</div><div class="line">包含有效浮点格式：转换成浮点数值，前导位0被忽略。</div><div class="line">包含有效十六进制格式：转换成相同大小的十进制数。</div><div class="line">空字符串：转换成NaN。</div></pre></td></tr></table></figure>
-<h3 id="parseInt-方法"><a href="#parseInt-方法" class="headerlink" title="parseInt()方法"></a>parseInt()方法</h3><h4 id="特性-1"><a href="#特性-1" class="headerlink" title="特性"></a>特性</h4><ol>
-<li>忽略前置空格</li>
-<li>直接找到第一个非空字符<br>· 不是数字字符或负号 //NaN.<br>· 数字字符：解析所有后续字符，遇到非数字字符结束.<br>· 小数点不是有效数字.</li>
-</ol>
-<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">参数1：要解析的字符串</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">参数2：转换时所使用的基数</div></pre></td></tr></table></figure>
-<h3 id="parseFloat-方法"><a href="#parseFloat-方法" class="headerlink" title="parseFloat()方法"></a>parseFloat()方法</h3><ol>
-<li>从第一个字符开始解析</li>
-<li>遇到无效浮点格式后结束</li>
-<li>只有第一个小数点有效</li>
-<li>忽略前导0</li>
-<li>十六进制数始终为0</li>
-<li>没有小数点或小数点后全为0(转换成整数)</li>
-</ol>
-<h1 id="object-对象类型"><a href="#object-对象类型" class="headerlink" title="* object 对象类型"></a>* object 对象类型</h1><h2 id="·-定义"><a href="#·-定义" class="headerlink" title="· 定义"></a>· 定义</h2><p><code>一组数据或功能的集合</code></p>
-<h2 id="·-声明"><a href="#·-声明" class="headerlink" title="· 声明"></a>· 声明</h2><p><code>var 0 = new Object();</code></p>
-<h2 id="·-属性与方法"><a href="#·-属性与方法" class="headerlink" title="· 属性与方法"></a>· 属性与方法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Constructor 保存用于创建当前对象的函数</div><div class="line">hasOwnProperty(propertyName) 检测给定属性在当前对象实例中是否存在</div><div class="line">isPrototypeOf(object) 检测传入的对象是否是另一个对象的原型</div><div class="line"></div><div class="line">propertyIsEnumerable(propertyName) 检测给定属性是否能用gor-in语句枚举</div><div class="line">toLocalString() 返回对象的字符串表示，该字符串与执行环境的地区对应</div><div class="line">toString() 返回对象的字符串表示</div><div class="line">valueOf() 返回对象的字符串、数值或布尔值表示；通常与toString()的值相同</div></pre></td></tr></table></figure>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/23/JS基础知识/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1173,7 +1078,7 @@ undefined
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

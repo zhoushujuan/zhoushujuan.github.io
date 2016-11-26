@@ -98,7 +98,7 @@ call、apply、bind方法的区别和相同之处：
 
 apply、call、bind三者都是用来改变函数的this对象的指向；
 apply、call、bind三者第一个参数都是this要指向的对象，也就是向指定的上下文(函数的每次调用都会拥有一个特殊值">
-<meta property="og:updated_time" content="2016-11-21T12:54:20.000Z">
+<meta property="og:updated_time" content="2016-11-21T12:58:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS中的call、apply、bind方法">
 <meta name="twitter:description" content="在JavaScript中，call、apply和bind是Function对象自带的三个方法，这三个方法的主要作用是改变函数中的this指向。
@@ -316,14 +316,14 @@ apply、call、bind三者第一个参数都是this要指向的对象，也就是
 <li><code>apply</code>、<code>call</code>、<code>bind</code>三者都是用来改变函数的this对象的指向；</li>
 <li><code>apply</code>、<code>call</code>、<code>bind</code>三者第一个参数都是this要指向的对象，也就是向指定的上下文(函数的每次调用都会拥有一个特殊值 —— 本次调用的上下文(xontext) —— 这就是this关键字的值。)；</li>
 <li><code>apply</code>、<code>call</code>、<code>bind</code>三者都可以利用后续参数传值；</li>
-<li><code>bind</code>是返回对应函数,便于稍后使用；<code>apply</code>、<code>call</code>则是立即调用。</li>
+<li><code>bind</code>是返回对应函数,便于稍后使用；<code>apply</code>、<code>call</code>则是立即调用。<a id="more"></a>
+<h2 id="this指向问题"><a href="#this指向问题" class="headerlink" title="this指向问题"></a>this指向问题</h2><ol>
+<li>在全局作用域下使用，this表示window.</li>
+<li>在函数内部使用<br> ·  使用this的函数，被当成对象属性调用，该this指向该对象。<br> · 普通函数调用时，其中的this指向window。<br> · 构造函数中使用，this指向实例化的对象。</li>
 </ol>
-<h2 id="this指向问题"><a href="#this指向问题" class="headerlink" title="this指向问题"></a>this指向问题</h2><pre><code>1. 在全局作用域下使用，this表示window.
-2. 在函数内部使用
-    ·  使用this的函数，被当成对象属性调用，该this指向该对象。
-    · 普通函数调用时，其中的this指向window。
-    · 构造函数中使用，this指向实例化的对象。
-</code></pre><h2 id="一、call-方法"><a href="#一、call-方法" class="headerlink" title="一、call()方法"></a>一、call()方法</h2><h3 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">call([thisObj[,arg1[, arg2[, [,.argN]]]]])</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="一、call-方法"><a href="#一、call-方法" class="headerlink" title="一、call()方法"></a>一、call()方法</h2><h3 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">call([thisObj[,arg1[, arg2[, [,.argN]]]]])</div></pre></td></tr></table></figure>
 <h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p><code>调用一个对象的一个方法，以另一个对象替换当前对象。</code></p>
 <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ol>
 <li><code>call</code>方法可以用来代替另一个对象调用其的方法。</li>
@@ -486,6 +486,10 @@ undefined
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2016/11/21/JS基础知识（二）———运算符/" rel="prev" title="JS基础知识（二）—— 运算符">
+                JS基础知识（二）—— 运算符 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -556,7 +560,7 @@ undefined
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
