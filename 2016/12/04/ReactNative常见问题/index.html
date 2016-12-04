@@ -1,0 +1,893 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/VEN/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/VEN/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="最近看到了一篇关于ReactNative常见问题的博客。正好前段时间遇到过其中一些问题，感觉总结的挺好的，转载过来以备用。^_^">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ReactNative常见问题">
+<meta property="og:url" content="http://yoursite.com/2016/12/04/ReactNative常见问题/index.html">
+<meta property="og:site_name" content="zhoushujuan">
+<meta property="og:description" content="最近看到了一篇关于ReactNative常见问题的博客。正好前段时间遇到过其中一些问题，感觉总结的挺好的，转载过来以备用。^_^">
+<meta property="og:updated_time" content="2016-12-04T13:28:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ReactNative常见问题">
+<meta name="twitter:description" content="最近看到了一篇关于ReactNative常见问题的博客。正好前段时间遇到过其中一些问题，感觉总结的挺好的，转载过来以备用。^_^">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> ReactNative常见问题 | zhoushujuan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">zhoushujuan</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时间是一切财富中最宝贵的财富。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ReactNative常见问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-04T20:30:29+08:00" content="2016-12-04">
+              2016-12-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/04/ReactNative常见问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/04/ReactNative常见问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近看到了一篇关于ReactNative常见问题的博客。正好前段时间遇到过其中一些问题，感觉总结的挺好的，转载过来以备用。^_^</p>
+<a id="more"></a>
+<h2 id="一般问题"><a href="#一般问题" class="headerlink" title="一般问题"></a>一般问题</h2><h3 id="RN和React-js是一个东西吗？"><a href="#RN和React-js是一个东西吗？" class="headerlink" title="RN和React.js是一个东西吗？"></a>RN和React.js是一个东西吗？</h3><pre><code>RN和React.js共用一些抽象层，但具体有很多差异，且目标平台不同：RN目前只能开发iOS/Android App，而React.js用于开发web页面。
+</code></pre><h3 id="RN有哪些已经上架的案例？"><a href="#RN有哪些已经上架的案例？" class="headerlink" title="RN有哪些已经上架的案例？"></a>RN有哪些已经上架的案例？</h3><pre><code>官方最近推出了一个由爱好者自行提交的showcase页面
+</code></pre><h3 id="RN可以在windows下开发吗？"><a href="#RN可以在windows下开发吗？" class="headerlink" title="RN可以在windows下开发吗？"></a>RN可以在windows下开发吗？</h3><pre><code>对于iOS开发，可以通过虚拟机等方式，但很麻烦也不推荐。做iOS开发，迟早你都需要一台Mac电脑。
+对于Android开发，理论上没问题。但由于FB的员工基本都用mac，没有怎么管过windows兼容性，所以目前的版本可能在windows上会遇到一些问题。
+</code></pre><h3 id="RN所支持的最低iOS和Android版本？"><a href="#RN所支持的最低iOS和Android版本？" class="headerlink" title="RN所支持的最低iOS和Android版本？"></a>RN所支持的最低iOS和Android版本？</h3><pre><code>Android &gt;= 4.1 (API 16)
+iOS &gt;= 7.0
+</code></pre><h3 id="RN和cordova-phonegap是一个东西吗？"><a href="#RN和cordova-phonegap是一个东西吗？" class="headerlink" title="RN和cordova/phonegap是一个东西吗？"></a>RN和cordova/phonegap是一个东西吗？</h3><pre><code>不一样。RN不是一个webview（但包含了webview组件），不能直接复用web页面代码。RN的性能接近原生，超过cordova/phonegap。
+</code></pre><h3 id="可以使用现有的js库吗？"><a href="#可以使用现有的js库吗？" class="headerlink" title="可以使用现有的js库吗？"></a>可以使用现有的js库吗？</h3><pre><code>由于RN理论上更接近nodejs的运行环境，所以对nodejs的库兼容更好一些。浏览器端的js库，涉及到DOM、BOM、CSS等功能的模块无法使用，因为RN的环境中没有这些东西。
+</code></pre><h3 id="可以使用现有的objc-swift-java库吗？"><a href="#可以使用现有的objc-swift-java库吗？" class="headerlink" title="可以使用现有的objc/swift/java库吗？"></a>可以使用现有的objc/swift/java库吗？</h3><pre><code>可以，但需要参照这篇和这篇进行修改。
+</code></pre><h2 id="环境搭建与编译问题"><a href="#环境搭建与编译问题" class="headerlink" title="环境搭建与编译问题"></a>环境搭建与编译问题</h2><h3 id="创建新项目，react-native-init-xxx命令长时间无响应，或报错shasum-check-failed"><a href="#创建新项目，react-native-init-xxx命令长时间无响应，或报错shasum-check-failed" class="headerlink" title="创建新项目，react native init xxx命令长时间无响应，或报错shasum check failed"></a>创建新项目，react native init xxx命令长时间无响应，或报错shasum check failed</h3><pre><code>由于众所周知的网络原因，react-native命令行从npm官方源拖代码时会遇上麻烦。请将npm仓库源替换为国内镜像：
+
+npm config set registry https://registry.npm.taobao.org
+npm config set disturl https://npm.taobao.org/dist
+
+另，执行init时切记不要在前面加上sudo（否则新项目的目录所有者会变为root而不是当前用户，导致一系列权限问题，请使用chown修复）。
+
+react-native中文网提供了完整的绿色纯净新项目包。完整打包全部iOS和Android的第三方依赖，只要环境配置正确，无需科学上网漫长等待，即可直接运行。
+</code></pre><h3 id="报错EACCES-permission-denied-open-‘Users-你的用户名-babel-json’"><a href="#报错EACCES-permission-denied-open-‘Users-你的用户名-babel-json’" class="headerlink" title="报错EACCES: permission denied, open ‘Users/你的用户名/.babel.json’"></a>报错EACCES: permission denied, open ‘Users/你的用户名/.babel.json’</h3><pre><code>执行如下命令：
+
+sudo chown 你的用户名 ~/.babel.json
+</code></pre><h3 id="如何升级RN版本？"><a href="#如何升级RN版本？" class="headerlink" title="如何升级RN版本？"></a>如何升级RN版本？</h3><pre><code>请用编辑器打开项目目录中的package.json，找到类似下面的一行配置
+
+&quot;react-native&quot;: &quot;0.13.0&quot;,
+
+将其改为要升级的版本号，如“0.15.0-rc”（当然要先确定这个版本已经发布到npm上了，如果配置中有^或~之类的符号，可以参考这篇文章来了解其含义。）。
+
+然后在当前目录的命令行中执行npm i
+
+如果提示权限错误则在前面加上sudo（windows下不需要）.
+
+npm i执行完毕且成功不报错之后，在项目目录中运行
+
+react-native upgrade
+
+对于0.14以下版本升级0.14的情况，还需要额外手动处理一下。
+</code></pre><h3 id="报错：EMFILE-too-many-open-files-‘……’"><a href="#报错：EMFILE-too-many-open-files-‘……’" class="headerlink" title="报错：EMFILE, too many open files ‘……’"></a>报错：EMFILE, too many open files ‘……’</h3><pre><code>请检查node版本（4.0以上），以及是否安装了watchman（目前只有Mac能装这个）
+</code></pre><h3 id="报错：SyntaxError-Use-of-const-in-strict-mode"><a href="#报错：SyntaxError-Use-of-const-in-strict-mode" class="headerlink" title="报错：SyntaxError: Use of const in strict mode"></a>报错：SyntaxError: Use of const in strict mode</h3><pre><code>请检查node版本（4.0以上）。
+</code></pre><h3 id="Windows下报错：ERROR-Watcher-took-too-long-to-load-Try-running-watchman-version-from-your-terminal"><a href="#Windows下报错：ERROR-Watcher-took-too-long-to-load-Try-running-watchman-version-from-your-terminal" class="headerlink" title="Windows下报错：ERROR  Watcher took too long to load Try running watchman version from your terminal"></a>Windows下报错：ERROR  Watcher took too long to load Try running <code>watchman version</code> from your terminal</h3><pre><code>启动packager.js时多传一个--nonPersistent参数。
+</code></pre><h3 id="报错：Invariant-Violation-Application-XXXX-has-not-been-registered"><a href="#报错：Invariant-Violation-Application-XXXX-has-not-been-registered" class="headerlink" title="报错：Invariant Violation:Application XXXX has not been registered."></a>报错：Invariant Violation:Application XXXX has not been registered.</h3><pre><code>请确保index.ios.js中的
+
+AppRegistry.registerComponent(&apos;项目名&apos;,() =&gt; ...);
+与appDelegate.m中的RCTRootView*rootView = [[RCTRootViewalloc]initWithBundleURL:jsCodeLocation
+
+moduleName:@&quot;项目名&quot; launchOptions:launchOptions];
+或是MainActivity.java中的mReactRootView.startReactApplication(mReactInstanceManager, &quot;项目名&quot;, null);都保持一致。
+</code></pre><h3 id="应该使用什么IDE开发？"><a href="#应该使用什么IDE开发？" class="headerlink" title="应该使用什么IDE开发？"></a>应该使用什么IDE开发？</h3><pre><code>虽然常用的JS编辑器很多，但由于RN大量使用jsx和es6语法，目前只有sublime text（通过插件）和webstorm（10以上版本）提供了良好的支持。笔者推荐webstorm，因为它有更完善的语法提示和补全。另外虽然主要的 业务逻辑是使用js开发，但仍然要依赖于原生的编译/调试环境，所以你还需要同时运行Xcode（iOS）或Android Studio（android）等
+</code></pre><h2 id="开发与调试问题"><a href="#开发与调试问题" class="headerlink" title="开发与调试问题"></a>开发与调试问题</h2><h3 id="如何开启调试功能？"><a href="#如何开启调试功能？" class="headerlink" title="如何开启调试功能？"></a>如何开启调试功能？</h3><pre><code>点击iOS模拟器顶部的Hardware菜单，选择Shake Gesture（对应真机摇一摇），会自动弹出如下图的菜单。
+
+安卓模拟器则是点击菜单键，真机上没有菜单键的，摇一摇即可。
+
+选 择Debug in Chrome即会启动Chrome作为运行和调试环境（注意此时JS引擎为Chrome的V8，与iOS真机的javascriptCore引擎存在一些 差异）。选择Inspect Element即可以像调试网页元素一样查看布局元素的样式，但比较简陋。React Devtools插件可装可不装，它只用来查看布局，不影响调试，且在目前的版本（&gt;0.13）中还无法正常加载。
+</code></pre><h3 id="调试模式下报错：Runtime-is-not-ready-Make-sure…或是socket-closed"><a href="#调试模式下报错：Runtime-is-not-ready-Make-sure…或是socket-closed" class="headerlink" title="调试模式下报错：Runtime is not ready. Make sure…或是socket closed."></a>调试模式下报错：Runtime is not ready. Make sure…或是socket closed.</h3><pre><code>有时Chrome进程会失去响应，可以尝试手动将Chrome的React Native Debugger标签切换到前台再Reload模拟器页面。
+</code></pre><h3 id="使用ListView时报错：Sticky-header-index-0-was-outside-the-range-…"><a href="#使用ListView时报错：Sticky-header-index-0-was-outside-the-range-…" class="headerlink" title="使用ListView时报错：Sticky header index 0 was outside the range {…}"></a>使用ListView时报错：Sticky header index 0 was outside the range {…}</h3><pre><code>看起来是个数组越界错误，但多数情况下是由于ListView的子组件渲染错误（如套数据时没有检查undefined等）引起，而非ListView本身的问题。
+</code></pre><h3 id="ListView的数据到底应该怎么配？"><a href="#ListView的数据到底应该怎么配？" class="headerlink" title="ListView的数据到底应该怎么配？"></a>ListView的数据到底应该怎么配？</h3><p><code>下面是我曾经写的一个小例子：</code></p>
+<pre><code>import React, { Component } from &apos;react&apos;;
+import {
+    StyleSheet,
+    Text,
+    View,
+    ListView,
+    Dimensions,
+    Image,
+    ActivityIndicator,
+    RefreshControl,
+    TouchableHighlight,
+} from &apos;react-native&apos;;
+let Icon = require(&apos;react-native-vector-icons/FontAwesome&apos;);
+let Mock = require(&apos;mockjs&apos;);
+let width = Dimensions.get(&apos;window&apos;).width;
+let height = Dimensions.get(&apos;window&apos;).height;
+
+class Detail extends Component {
+    back(){
+           console.log(&apos;123&apos;)
+        this.props.navigator.pop();
+    }
+    render(){
+        return(
+            &lt;View&gt;
+                &lt;View style={{marginTop:40}}&gt;
+                    &lt;Text onPress={this.back.bind(this)}&gt;返回&lt;/Text&gt;
+                &lt;/View&gt;
+                &lt;View style={{marginTop:40}}&gt;
+                    &lt;Text&gt;{this.props.title}&lt;/Text&gt;
+                &lt;/View&gt;
+            &lt;/View&gt;
+        )
+    }
+}
+
+
+class Index extends Component{
+    constructor(props){
+        super(props)
+        ds = new ListView.DataSource({rowHasChanged:(row1,row2)=&gt;row1 != row2});
+        this.state={
+            dataSource:ds.cloneWithRows([]),
+            num:0,
+            all:1,
+            list:[],
+            hasMoreData:true,
+            isRefreshing:false,
+        };
+        this._fetch();
+    }
+    _fetch(params){
+        let argu = params;
+        if(this.state.num &gt;= this.state.all){
+            this.setState({
+                hasMoreData:false
+            })
+            return
+        }
+        fetch(&apos;http://rap.taobao.org/mockjs/8607/all/haha?reqParam=all&apos;)
+            .then((response)=&gt;(response.json()))
+            .then((responseJson)=&gt;{
+                let data = Mock.mock(responseJson);
+                if(data.success){
+                    if(argu == &apos;refresh&apos;){
+                    this.state.list=data.data.concat(this.state.list);
+                        this.setState({
+                            num:this.state.num + data.data.length,
+                            all:data.totle,
+
+                        dataSource:ds.cloneWithRows(this.state.list)
+
+                        })
+                    }else{
+                        this.state.list=this.state.list.concat(data.data);
+                        this.setState({
+                            num:this.state.num + data.data.length,
+                            all:data.totle,
+                            dataSource:ds.cloneWithRows(this.state.list)
+
+                        })
+                    }
+
+                }
+            })
+        console.log(this.state.list);
+    }
+    _renderFooter(){
+        if(this.state.hasMoreData){
+            return(
+                &lt;View     style={{justifyContent:'center',alignItems:'center'}}&gt;
+                    &lt;ActivityIndicator
+                    animating={this.state.animating}
+                        style={[styles.centering, {height: 50}]}
+                    /&gt;
+                    &lt;Text style={{color:'#999'}}&gt;努力加载中……&lt;/Text&gt;
+                &lt;/View&gt;
+            )
+        }else{
+            return(
+                &lt;View style={{justifyContent:'center',alignItems:'center',marginTop:20}}&gt;
+                    &lt;Text style={{color:'#999'}}&gt;没有更多数据了&lt;/Text&gt;
+                &lt;/View&gt;
+            )
+        }
+    }
+    switch(rowData){
+        this.props.navigator.push({
+            name:&apos;详情&apos;,
+            component:Detail,
+            params:rowData,
+        })
+    }
+    _render(rowData){
+        return(
+            &lt;TouchableHighlight onPress={this.switch.bind(this,rowData)}&gt;
+                &lt;View style={{height:height*0.14,borderBottomWidth:1,flexDirection:'row',justifyContent:'space-between'}}&gt;
+                    &lt;View style={styles.pic}&gt;
+                        &lt;Image
+                        style={{width:width*0.3,height:height*0.125}}
+                        source={{uri:rowData.pic}}
+                        /&gt;
+                    &lt;/View&gt;
+                    &lt;View style={styles.content}&gt;
+                        &lt;View style={styles.title}&gt;
+                            &lt;Text style={{lineHeight:height*0.04,fontSize:12,color:'green'}}&gt;{rowData.title}&lt;/Text&gt;
+                        &lt;/View&gt;
+                        &lt;View style={styles.info}&gt;
+                            &lt;View style={styles.num}&gt;
+                                &lt;Icon
+                                style={styles.icon}
+                                name=&quot;heart&quot;/&gt;
+                                &lt;Text style={{color:'gray',fontSize:8}}&gt;{rowData.num}人在学习&lt;/Text&gt;
+                            &lt;/View&gt;
+                            &lt;View style={styles.time}&gt;
+                                &lt;Icon
+                                style={styles.icon}
+                                name=&quot;heart&quot;/&gt;
+                                &lt;Text style={{color:'gray',fontSize:8}}&gt;{rowData.time}小时&lt;/Text&gt;
+                            &lt;/View&gt;
+                        &lt;/View&gt;
+                    &lt;/View&gt;
+                &lt;/View&gt;
+            &lt;/TouchableHighlight&gt;
+        )
+    }
+    render(){
+        return(
+            &lt;View style={{height:600,marginTop:20}}&gt;
+                &lt;View&gt;
+                    &lt;Text&gt;课程列表&lt;/Text&gt;
+                &lt;/View&gt;
+                &lt;ListView
+                    dataSource={this.state.dataSource}
+                    renderRow={this._render.bind(this)}
+                enableEmptySections={true}
+                    onEndReached={this._fetch.bind(this)}  //滚动条触底时调用模块
+                onEndReachedThreshold={20}   //距离底部多少执行触底函数
+                renderFooter={this._renderFooter.bind(this)}   //上拉加载
+                showsVerticalScrollIndicator={false}
+                automaticallyAdjustContentInsets={false}
+                    refreshControl={
+                        this.state.hasMoreData?
+                            &lt;RefreshControl
+                                refreshing={this.state.isRefreshing}
+                                onRefresh={this._fetch.bind(this,&apos;refresh&apos;)}
+                            tintColor=&quot;#ff0000&quot;
+                            title=&quot;正在刷新……&quot;
+                            titleColor=&quot;#00ff00&quot;
+                            colors={[&apos;#ff0000&apos;, &apos;#00ff00&apos;, &apos;#0000ff&apos;]}
+                            progressBackgroundColor=&quot;#ffff00&quot;
+                            /&gt;
+                            :
+                            &lt;RefreshControl
+                            refreshing={this.state.isRefreshing}
+                            onRefresh={this._fetch.bind(this,&apos;refresh&apos;)}
+                                tintColor=&quot;#ff0000&quot;
+                                title=&quot;没有更多数据了，休息一会吧。&quot;
+                                titleColor=&quot;#00ff00&quot;
+                                colors={[&apos;#ff0000&apos;, &apos;#00ff00&apos;, &apos;#0000ff&apos;]}
+                            progressBackgroundColor=&quot;#ffff00&quot;
+                            /&gt;
+                    }   //下拉刷新
+                /&gt;
+            &lt;/View&gt;
+        )
+    }
+}
+const styles = StyleSheet.create({
+    pic:{
+        width:width*0.35,
+        height:height*0.125,
+        padding:5
+    },
+    content:{
+        width:width*0.7,
+        height:height*0.125,
+    },
+    title:{
+        marginTop:10,
+        height:height*0.04
+    },
+    info:{
+        marginTop:20,
+        flexDirection:&apos;row&apos;
+    },
+    num:{
+        flexDirection:&apos;row&apos;
+    },
+    time:{
+        flexDirection:&apos;row&apos;,
+        marginLeft:20
+    },
+    icon:{
+        color:&apos;lightgreen&apos;,
+        marginRight:5
+    }
+})
+module.exports = Index;
+</code></pre><h3 id="使用Image时报错：You-are-trying-to-render-the-global-Image-variable-as-a-React-element-You-probably-forgot-to-require-Image"><a href="#使用Image时报错：You-are-trying-to-render-the-global-Image-variable-as-a-React-element-You-probably-forgot-to-require-Image" class="headerlink" title="使用Image时报错：You are trying to render the global Image variable as a React element. You probably forgot to require Image."></a>使用Image时报错：You are trying to render the global Image variable as a React element. You probably forgot to require Image.</h3><pre><code>由于React的Image组件和全局的Image对象重名，所以使用Image组件时一定要记得在文件开头正确引入React的Image组件。
+</code></pre><h3 id="在使用Navigator的同时使用ListView或ScrollView，后两者的头部会多出一些空间。"><a href="#在使用Navigator的同时使用ListView或ScrollView，后两者的头部会多出一些空间。" class="headerlink" title="在使用Navigator的同时使用ListView或ScrollView，后两者的头部会多出一些空间。"></a>在使用Navigator的同时使用ListView或ScrollView，后两者的头部会多出一些空间。</h3><pre><code>将automaticallyAdjustContentInsets属性设为{false}.
+</code></pre><h3 id="有一些示例代码中有奇怪的问号，比如function-foo-x-string-，代表什么意思？"><a href="#有一些示例代码中有奇怪的问号，比如function-foo-x-string-，代表什么意思？" class="headerlink" title="有一些示例代码中有奇怪的问号，比如function foo(x:?string)，代表什么意思？"></a>有一些示例代码中有奇怪的问号，比如function foo(x:?string)，代表什么意思？</h3><pre><code>这是通过一个名为flow的外部工具为javascript加上强类型检查的功能，不影响编译和运行。
+</code></pre><h3 id="报错：Adjacent-JSX-elements-must-be-wrapped-in-an-enclosing-tag"><a href="#报错：Adjacent-JSX-elements-must-be-wrapped-in-an-enclosing-tag" class="headerlink" title="报错：Adjacent JSX elements must be wrapped in an enclosing tag."></a>报错：Adjacent JSX elements must be wrapped in an enclosing tag.</h3><pre><code>render方法中必须只能包含一个根元素
+</code></pre><h3 id="报错：Invariant-Violation-onlyChild-must-be-passed-a-children-with-exactly-one-child"><a href="#报错：Invariant-Violation-onlyChild-must-be-passed-a-children-with-exactly-one-child" class="headerlink" title="报错：Invariant Violation: onlyChild must be passed a children with exactly one child"></a>报错：Invariant Violation: onlyChild must be passed a children with exactly one child</h3><pre><code>一般是Touchable开头的几个组件，如果没有子元素或者指定多个并列子元素都会报错。
+</code></pre><h3 id="如何获取服务器端数据-可以使用Ajax吗？"><a href="#如何获取服务器端数据-可以使用Ajax吗？" class="headerlink" title="如何获取服务器端数据/可以使用Ajax吗？"></a>如何获取服务器端数据/可以使用Ajax吗？</h3><pre><code>可以用ajax，以及大部分现有的ajax库，而且不受浏览器跨域限制。官方推荐用更简单的fetch api来替代传统的ajax.但目前还无法在Chrome中直接观测请求的详情。
+</code></pre><hr>
+<p>有些事情无论你有多着急或者多害怕，我们现在都不能往前冲，冲出去也没有用，飞不起来的，现在你只需要静静地，等风来。  ———— 《等风来》</p>
+<hr>
+<p>感谢原文作者：<a href="http://blog.sina.com.cn/s/blog_7bee73ed0102vyht.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_7bee73ed0102vyht.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/26/gulp自动化构建工具/" rel="next" title="gulp自动化构建工具">
+                <i class="fa fa-chevron-left"></i> gulp自动化构建工具
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/04/ReactNative常见问题/"
+           data-title="ReactNative常见问题" data-url="http://yoursite.com/2016/12/04/ReactNative常见问题/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="周书娟" />
+          <p class="site-author-name" itemprop="name">周书娟</p>
+          <p class="site-description motion-element" itemprop="description">My weakness is that i care too much.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhoushujuan/zhoushujuan.github.io" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一般问题"><span class="nav-number">1.</span> <span class="nav-text">一般问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RN和React-js是一个东西吗？"><span class="nav-number">1.1.</span> <span class="nav-text">RN和React.js是一个东西吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RN有哪些已经上架的案例？"><span class="nav-number">1.2.</span> <span class="nav-text">RN有哪些已经上架的案例？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RN可以在windows下开发吗？"><span class="nav-number">1.3.</span> <span class="nav-text">RN可以在windows下开发吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RN所支持的最低iOS和Android版本？"><span class="nav-number">1.4.</span> <span class="nav-text">RN所支持的最低iOS和Android版本？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RN和cordova-phonegap是一个东西吗？"><span class="nav-number">1.5.</span> <span class="nav-text">RN和cordova/phonegap是一个东西吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可以使用现有的js库吗？"><span class="nav-number">1.6.</span> <span class="nav-text">可以使用现有的js库吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可以使用现有的objc-swift-java库吗？"><span class="nav-number">1.7.</span> <span class="nav-text">可以使用现有的objc/swift/java库吗？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境搭建与编译问题"><span class="nav-number">2.</span> <span class="nav-text">环境搭建与编译问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建新项目，react-native-init-xxx命令长时间无响应，或报错shasum-check-failed"><span class="nav-number">2.1.</span> <span class="nav-text">创建新项目，react native init xxx命令长时间无响应，或报错shasum check failed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#报错EACCES-permission-denied-open-‘Users-你的用户名-babel-json’"><span class="nav-number">2.2.</span> <span class="nav-text">报错EACCES: permission denied, open ‘Users/你的用户名/.babel.json’</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何升级RN版本？"><span class="nav-number">2.3.</span> <span class="nav-text">如何升级RN版本？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#报错：EMFILE-too-many-open-files-‘……’"><span class="nav-number">2.4.</span> <span class="nav-text">报错：EMFILE, too many open files ‘……’</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#报错：SyntaxError-Use-of-const-in-strict-mode"><span class="nav-number">2.5.</span> <span class="nav-text">报错：SyntaxError: Use of const in strict mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows下报错：ERROR-Watcher-took-too-long-to-load-Try-running-watchman-version-from-your-terminal"><span class="nav-number">2.6.</span> <span class="nav-text">Windows下报错：ERROR  Watcher took too long to load Try running watchman version from your terminal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#报错：Invariant-Violation-Application-XXXX-has-not-been-registered"><span class="nav-number">2.7.</span> <span class="nav-text">报错：Invariant Violation:Application XXXX has not been registered.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应该使用什么IDE开发？"><span class="nav-number">2.8.</span> <span class="nav-text">应该使用什么IDE开发？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发与调试问题"><span class="nav-number">3.</span> <span class="nav-text">开发与调试问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何开启调试功能？"><span class="nav-number">3.1.</span> <span class="nav-text">如何开启调试功能？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调试模式下报错：Runtime-is-not-ready-Make-sure…或是socket-closed"><span class="nav-number">3.2.</span> <span class="nav-text">调试模式下报错：Runtime is not ready. Make sure…或是socket closed.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用ListView时报错：Sticky-header-index-0-was-outside-the-range-…"><span class="nav-number">3.3.</span> <span class="nav-text">使用ListView时报错：Sticky header index 0 was outside the range {…}</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ListView的数据到底应该怎么配？"><span class="nav-number">3.4.</span> <span class="nav-text">ListView的数据到底应该怎么配？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Image时报错：You-are-trying-to-render-the-global-Image-variable-as-a-React-element-You-probably-forgot-to-require-Image"><span class="nav-number">3.5.</span> <span class="nav-text">使用Image时报错：You are trying to render the global Image variable as a React element. You probably forgot to require Image.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在使用Navigator的同时使用ListView或ScrollView，后两者的头部会多出一些空间。"><span class="nav-number">3.6.</span> <span class="nav-text">在使用Navigator的同时使用ListView或ScrollView，后两者的头部会多出一些空间。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有一些示例代码中有奇怪的问号，比如function-foo-x-string-，代表什么意思？"><span class="nav-number">3.7.</span> <span class="nav-text">有一些示例代码中有奇怪的问号，比如function foo(x:?string)，代表什么意思？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#报错：Adjacent-JSX-elements-must-be-wrapped-in-an-enclosing-tag"><span class="nav-number">3.8.</span> <span class="nav-text">报错：Adjacent JSX elements must be wrapped in an enclosing tag.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#报错：Invariant-Violation-onlyChild-must-be-passed-a-children-with-exactly-one-child"><span class="nav-number">3.9.</span> <span class="nav-text">报错：Invariant Violation: onlyChild must be passed a children with exactly one child</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何获取服务器端数据-可以使用Ajax吗？"><span class="nav-number">3.10.</span> <span class="nav-text">如何获取服务器端数据/可以使用Ajax吗？</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">周书娟</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/VEN/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/VEN/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/VEN/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/VEN/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/VEN/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/VEN/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhoushujuan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
